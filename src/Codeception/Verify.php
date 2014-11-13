@@ -101,5 +101,25 @@ class Verify {
         a::assertArrayNotHasKey($key, $this->actual, $this->description);
     }
 
+    public function isLike($needle)
+    {
+        a::assertRegExp("/{$needle}/", $this->actual, $this->description);
+    }
+
+    public function isNotLike($needle)
+    {
+        a::assertNotRegExp("/{$needle}/", $this->actual, $this->description);
+    }
+
+    public function isKindOfLike($needle)
+    {
+        $needle = strtolower($needle);
+        a::assertRegExp("/{$needle}/i", $this->actual, $this->description);
+    }
+
+    public function isNotKindOfLike($needle)
+    {
+        a::assertNotRegExp("/{$needle}/i", $this->actual, $this->description);
+    }
 }
 

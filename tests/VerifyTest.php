@@ -71,4 +71,15 @@ class VerifyTest extends PHPUnit_Framework_TestCase {
         expect($errors)->hasntKey('body');
     }
 
+    public function testIsLike()
+    {
+        verify("some string to test")->isLike('some *string .*');
+        verify("user have 5 posts")->isNotLike('user have 5 posts and more');
+    }
+
+    public function testIsKindOfLike()
+    {
+        verify("Some String To Test")->isKindOfLike('some *string To Test.*');
+        verify("user have 5 posts")->isNotKindOfLike('USER HAVE 5 POSTS and more');
+    }
 }
